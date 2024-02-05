@@ -1,30 +1,39 @@
 package org.howard.edu.lsp.hw2;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class WordCounter {
 
-    public static void main(String[] args) {
-        try {
-            // Print the current working directory
-            System.out.println("Current Working Directory: " + System.getProperty("user.dir"));
+    public static void main(String[] args) throws UnsupportedEncodingException {
+        InputStream input = WordCounter.class.getResourceAsStream("words.txt");
 
-            // Use a relative path to the file
-            File myObj = new File("words.txt");
-            Scanner myReader = new Scanner(myObj);
+        Map<String, Integer> wordCount = new HashMap<>();
 
-            while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                System.out.println(data);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(input, "UTF-8"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] words = line.split("\\s+");
+                for (String word : words) {
+                    // Change the word into lowercase
+                    word = word.toLowerCase();
+
+                    // Only consider a word valid when it's not a number and is greater than length 3
+                    if (!word.matches("\\d+") && word.length() > 3) {
+                        wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+                    }
+                }
             }
-
-            myReader.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+        } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        for (Map.Entry<String, Integer> entry : wordCount.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
         }
     }
 }
-
