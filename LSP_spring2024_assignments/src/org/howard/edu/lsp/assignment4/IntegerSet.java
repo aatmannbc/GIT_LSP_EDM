@@ -1,9 +1,11 @@
 package org.howard.edu.lsp.assignment4;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Class representing a set of integers.
@@ -148,14 +150,19 @@ public class IntegerSet {
          * @param otherSet The other set to perform the union with.
          * @return A new set containing the union of the elements.
          */
+//        public IntegerSet union(IntegerSet otherSet) {
+//            List<Integer> combinedElements = new ArrayList<>(elements);  // Start with elements from this set
+//            for (int element : otherSet.elements) {
+//                if (!combinedElements.contains(element)) {
+//                    combinedElements.add(element);
+//                }
+//            }
+//            return new IntegerSet(combinedElements);
+//        }
         public IntegerSet union(IntegerSet otherSet) {
-            List<Integer> combinedElements = new ArrayList<>(elements);
-            for (int element : otherSet.elements) {
-                if (!combinedElements.contains(element)) {
-                    combinedElements.add(element);
-                }
-            }
-            return new IntegerSet(combinedElements);
+            Set<Integer> combinedElements = new HashSet<>(elements);  // Start with elements from this set
+            combinedElements.addAll(otherSet.elements);  // Add elements from otherSet
+            return new IntegerSet(new ArrayList<>(combinedElements));  // Create and return a new IntegerSet
         }
 
         /**
