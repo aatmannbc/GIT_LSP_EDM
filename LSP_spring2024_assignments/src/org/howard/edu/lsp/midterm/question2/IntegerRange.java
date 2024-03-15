@@ -6,6 +6,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.ranges.Range;
 import org.w3c.dom.ranges.RangeException;
 
+/**
+ * IntegerRange implements the Range interface representing a range of integers with a defined starting and ending point (inclusive).
+ */
 public class IntegerRange implements Range {
 
     private final int lowerBound;
@@ -113,17 +116,17 @@ public class IntegerRange implements Range {
         return "[" + lowerBound + ", " + upperBound + "]";
     }
 
-	@Override
-	public Node getStartContainer() throws DOMException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    // Unimplemented methods from the Range interface (commented out for clarity)
 
-	@Override
-	public int getStartOffset() throws DOMException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    public Node getStartContainer() throws DOMException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("DOM methods not implemented");
+    }
+
+    public int getStartOffset() throws DOMException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("DOM methods not implemented");
+    }
 
 	@Override
 	public Node getEndContainer() throws DOMException {
@@ -250,4 +253,7 @@ public class IntegerRange implements Range {
 		// TODO Auto-generated method stub
 		
 	}
+
+    // ... other unimplemented methods ...
+
 }
