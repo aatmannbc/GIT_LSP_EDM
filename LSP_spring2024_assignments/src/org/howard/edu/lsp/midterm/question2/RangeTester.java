@@ -9,8 +9,8 @@ public class RangeTester {
         IntegerRange numberSet3 = new IntegerRange(2, 4);
 
         // Verify the contains method functionality
-        System.out.printf("Does number set 1 include 7? %b\n", numberSet1.contains(7)); // Output: true
-        System.out.printf("Does number set 2 include 15? %b\n", numberSet2.contains(15)); // Output: false
+        System.out.printf("Does the number set 1 include 7? %b\n", numberSet1.contains(7)); // Output: true
+        System.out.printf("Does the number set 2 include 15? %b\n", numberSet2.contains(15)); // Output: false
 
         // Verify the overlaps method functionality
         System.out.printf("Do number set 1 and number set 2 overlap? %b\n", numberSet1.overlaps(numberSet2)); // Output: true

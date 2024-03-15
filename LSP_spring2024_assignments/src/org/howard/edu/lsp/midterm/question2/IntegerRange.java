@@ -42,7 +42,7 @@ public class IntegerRange implements Range {
     /**
      * Checks if this range overlaps with another range.
      * 
-     * @param other The other range to compare with.
+     * @param others The other range to compare with.
      * @return True if there's at least one value in common, false otherwise.
      */
     public boolean overlaps(Range other) {
